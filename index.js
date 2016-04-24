@@ -42,4 +42,21 @@ $(function(){
         $(this).attr('placeholder','视觉设计');
     })
 
+    var leftLi = $('.content-left li');
+    var lastI = leftLi.last();
+    for(var j = 0;j<leftLi.length;j++){
+        if(j!=0) {
+            leftLi.eq(j).on('mouseover', function () {
+                var divH = $(this).find('div').height();
+                var iH = $(this).height();
+                $(this).find('div').css('top', -iH / 2);
+                $(this).find('span').css('height', $(this).height());
+                 var topAndDiv =$(this).find('div').offset().top+divH;
+                 var iAndtop = lastI.offset().top+ lastI.height() ;
+                if(topAndDiv >iAndtop){
+                    $(this).find('div').css('top',-(divH -lastI.height())+20);
+                }
+            })
+        }
+    }
 });
